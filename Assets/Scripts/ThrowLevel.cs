@@ -5,47 +5,87 @@ using UnityEngine;
 
 public class ThrowLevel : MonoBehaviour
 {
+    private FloorsPool floorsPool;
     Rigidbody rb;
+    [SerializeField] private float speed = 2;
+    private bool canMove = true;
+
+    private direction _direction;
+    private enum direction
+    {
+        Left,
+        Right
+    }
 
     void Start()
     {
         AddRigidBody();
+        int randomRange = UnityEngine.Random.Range(0, 2);
+        if(randomRange == 0)
+        {
+            _direction = direction.Left;
+        }
+        else
+        {
+            _direction = direction.Right;
+        }
     }
+
     void AddRigidBody()
     {
         rb = gameObject.AddComponent<Rigidbody>();
         rb.useGravity = false;
     }
 
-
-
     void Update()
     {
-        InputSpace();
         InputTouch();
-        MovingPosition();
+        if (canMove)
+        {
+            if(_direction == direction.Left)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * speed * -1);
+            }
+
+            if(_direction == direction.Right)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * speed);
+            }
+
+            if(transform.position.x >= 1)
+            {
+                _direction = direction.Left;
+            }
+
+            if(transform.position.x <= -1)
+            {
+                _direction = direction.Right;
+            }
         }
+    }
 
     void InputTouch()
     {
-        if(Input.touchCount > 0)
+        if(Input.GetMouseButtonDown(0))
         {
-            Touch touch = Input.GetTouch(0);
             rb.useGravity = true;
+            canMove = false;
         } 
     }
-
-    void InputSpace()
+    
+    public void AssignFloorPool(FloorsPool fp)
     {
-        if (Input.GetKey(KeyCode.Space))
+        floorsPool = fp;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (floorsPool == null)
         {
-            rb.useGravity = true;
+            return;
         }
+        floorsPool.MakeTrue();
+        rb.isKinematic = true;
+        floorsPool = null;
     }
-
-    void MovingPosition()
-    {
-        transform.position = new Vector3(200f, 20f, 0f);
-    }
-
 }
