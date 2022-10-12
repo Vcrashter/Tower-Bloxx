@@ -12,7 +12,12 @@ public class FloorsPool : MonoBehaviour
 
     void Update()
     {
-        if(canCreate)
+        CreatePossibility();
+    }
+
+    private void CreatePossibility()
+    {
+        if (canCreate)
         {
             float xOffset = Random.Range(-1f, 1f);
             Vector3 offset = new Vector3(xOffset, yOffset + counter, 0);

@@ -20,8 +20,13 @@ public class ThrowLevel : MonoBehaviour
     void Start()
     {
         AddRigidBody();
+        StartDirection();
+    }
+
+    private void StartDirection()
+    {
         int randomRange = UnityEngine.Random.Range(0, 2);
-        if(randomRange == 0)
+        if (randomRange == 0)
         {
             _direction = direction.Left;
         }
@@ -40,24 +45,29 @@ public class ThrowLevel : MonoBehaviour
     void Update()
     {
         InputTouch();
+        MovingDirection();
+    }
+
+    private void MovingDirection()
+    {
         if (canMove)
         {
-            if(_direction == direction.Left)
+            if (_direction == direction.Left)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * speed * -1);
             }
 
-            if(_direction == direction.Right)
+            if (_direction == direction.Right)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
             }
 
-            if(transform.position.x >= 1)
+            if (transform.position.x >= 1)
             {
                 _direction = direction.Left;
             }
 
-            if(transform.position.x <= -1)
+            if (transform.position.x <= -1)
             {
                 _direction = direction.Right;
             }
