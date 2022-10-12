@@ -2,17 +2,26 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FloorsPool : MonoBehaviour
 {
     public GameObject otherFloor;
+    public TextMeshProUGUI floorLevel;
+
     public int yOffset;
     private int counter;
     private bool canCreate = true;
 
+    private void Awake()
+    {
+        UpdateDisplay();
+    }
+
     void Update()
     {
         CreatePossibility();
+        UpdateDisplay();
     }
 
     private void CreatePossibility()
@@ -26,6 +35,11 @@ public class FloorsPool : MonoBehaviour
             towerLevel.GetComponent<ThrowLevel>().AssignFloorPool(this);
             canCreate = false;
         }
+    }
+
+    void UpdateDisplay()
+    {
+        floorLevel.text = "Floor:" + counter;
     }
 
     public void MakeTrue()
