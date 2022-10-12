@@ -95,7 +95,7 @@ public class ThrowLevel : MonoBehaviour
             return;
         }
         floorsPool.MakeTrue();
-        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezePositionZ;
         floorsPool = null;
     }
 }
