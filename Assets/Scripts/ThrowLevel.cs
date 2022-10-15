@@ -7,6 +7,7 @@ public class ThrowLevel : MonoBehaviour
 {
     private FloorsPool floorsPool;
     Rigidbody rb;
+
     [SerializeField] private float speed = 2;
     private bool canMove = true;
 
@@ -19,7 +20,7 @@ public class ThrowLevel : MonoBehaviour
 
     void Start()
     {
-        AddRigidBody();
+        GetRigidBody();
         StartDirection();
     }
 
@@ -36,9 +37,9 @@ public class ThrowLevel : MonoBehaviour
         }
     }
 
-    void AddRigidBody()
+    void GetRigidBody()
     {
-        rb = gameObject.AddComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
     }
 
@@ -95,7 +96,7 @@ public class ThrowLevel : MonoBehaviour
             return;
         }
         floorsPool.MakeTrue();
-        rb.constraints = RigidbodyConstraints.FreezePositionZ;
         floorsPool = null;
     }
+
 }
