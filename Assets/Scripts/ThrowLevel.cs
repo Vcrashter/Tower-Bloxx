@@ -96,7 +96,8 @@ public class ThrowLevel : MonoBehaviour
             return;
         }
         floorsPool.MakeTrue();
+        rb.isKinematic = true;
+        transform.rotation = collision.transform.rotation;
         floorsPool = null;
     }
-
 }
