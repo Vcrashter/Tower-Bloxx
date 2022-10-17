@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherFloor: {fileID: 6317704909861795854, guid: 060b67929f641424386b4e5dfae9dc05, type: 3}
-  spawnTimer: 3
+  floorLevel: {fileID: 0}
+  yOffset: 5
