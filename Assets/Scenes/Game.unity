@@ -536,24 +536,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2037018813 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5138805118645275269, guid: ecadc14a0dcad414c9b3433f9e95b6fb, type: 3}
-  m_PrefabInstance: {fileID: 5138805118562967266}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2037018814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037018813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb889e8c9ae63d247892b6be0658d8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 3
 --- !u!1 &2073155774
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +791,10 @@ PrefabInstance:
       propertyPath: floorLevel
       value: 
       objectReference: {fileID: 2073155776}
+    - target: {fileID: 3577744225476164206, guid: b1b1e10de5508c54da06316bf210a50a, type: 3}
+      propertyPath: otherFloor
+      value: 
+      objectReference: {fileID: 290940137686575316, guid: 060b67929f641424386b4e5dfae9dc05, type: 3}
     - target: {fileID: 3577744225476164211, guid: b1b1e10de5508c54da06316bf210a50a, type: 3}
       propertyPath: m_Name
       value: Floors
@@ -829,10 +815,6 @@ PrefabInstance:
     - target: {fileID: 5138805118645275273, guid: ecadc14a0dcad414c9b3433f9e95b6fb, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5138805118645275273, guid: ecadc14a0dcad414c9b3433f9e95b6fb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5138805118645275273, guid: ecadc14a0dcad414c9b3433f9e95b6fb, type: 3}
       propertyPath: m_LocalPosition.x

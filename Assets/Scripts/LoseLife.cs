@@ -20,6 +20,7 @@ public class LoseLife : MonoBehaviour
         if (FindObjectOfType<ThrowLevel>())
         {
             life--;
+            Destroy(collision.gameObject, 3f);
         }
 
         if(life == 0)

@@ -6,7 +6,7 @@ using TMPro;
 
 public class FloorsPool : MonoBehaviour
 {
-    public GameObject otherFloor;
+    public ThrowLevel otherFloor;
     public TextMeshProUGUI floorLevel;
 
     public int yOffset;

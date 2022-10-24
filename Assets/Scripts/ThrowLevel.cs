@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ThrowLevel : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class ThrowLevel : MonoBehaviour
     Rigidbody rb;
 
     [SerializeField] private float speed = 2;
-    private bool canMove = true;
+    [SerializeField] ParticleSystem Stars3;
+    [SerializeField] ParticleSystem Stars2;
+    [SerializeField] ParticleSystem Star1;
+    [SerializeField] ParticleSystem badDrop;
 
+    private bool canMove = true;
     private direction _direction;
     private enum direction
     {
@@ -89,15 +94,51 @@ public class ThrowLevel : MonoBehaviour
         floorsPool = fp;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (floorsPool == null)
         {
             return;
         }
         floorsPool.MakeTrue();
-        rb.isKinematic = true;
-        transform.rotation = collision.transform.rotation;
+        float distance = collision.transform.position.x - gameObject.transform.position.x;
+        WinOrLose(distance);
         floorsPool = null;
+    }
+
+    private void WinOrLose(float distance)
+    {
+        if(distance > 0)
+        {
+            distance = distance * -1;
+        }
+
+        if (distance >= -0.1f)
+        {
+            Stars3.Play();
+            rb.isKinematic = true;
+            Debug.Log(distance);
+        }
+
+        else if (distance >= -0.2f && distance < -0.1f)
+        {
+            Stars2.Play();
+            rb.isKinematic = true;
+            Debug.Log(distance);
+        }
+
+        else if (distance >= -0.5f && distance < -0.2f)
+        {
+            Star1.Play();
+            rb.isKinematic = true;
+            Debug.Log(distance);
+        }
+
+        else
+        {
+            badDrop.Play();
+            rb.isKinematic = false;
+            Debug.Log(distance);
+        }
     }
 }
